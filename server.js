@@ -81,6 +81,15 @@ var initDb = function(callback) {
   });
 };
 
+
+//--- Start2
+require('./models/User');
+require('./models/Article');
+require('./models/Comment');
+require('./config/passport');
+//--- End2
+
+
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
