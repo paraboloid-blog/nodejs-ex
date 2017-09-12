@@ -54,9 +54,6 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-//mongoose.connect(mongoURL);
-
-
 var db = null,
     dbDetails = new Object();
 
@@ -66,6 +63,7 @@ var initDb = function(callback) {
   var mongodb = require('mongodb');
   if (mongodb == null) return;
 
+//mongoose.connect(mongoURL);
   mongodb.connect(mongoURL, function(err, conn) {
     if (err) {
       callback(err);
@@ -92,7 +90,7 @@ app.use(require('./routes'));
 //--- End2
 
 
-//app.get('/', function (req, res) {
+app.get('/', function (req, res) {
 //  // try to initialize the db on every request if it's not already
 //  // initialized.
 //  if (!db) {
@@ -108,9 +106,9 @@ app.use(require('./routes'));
 //  } else {
 //    res.render('index.html', { pageCountMessage : null});
 //  }
-//});
-//
-//app.get('/pagecount', function (req, res) {
+});
+
+app.get('/pagecount', function (req, res) {
 //  // try to initialize the db on every request if it's not already
 //  // initialized.
 //  if (!db) {
@@ -123,14 +121,14 @@ app.use(require('./routes'));
 //  } else {
 //    res.send('{ pageCount: -1 }');
 //  }
-//});
-//
-//// error handling
-//app.use(function(err, req, res, next){
-//  console.error(err.stack);
-//  res.status(500).send('Something bad happened!');
-//});
-//
+});
+
+// error handling
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500).send('Something bad happened!');
+});
+
 initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
