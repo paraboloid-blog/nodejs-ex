@@ -12,7 +12,8 @@
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
     "object-assign":"4.1.0",
-    "body-parser": "1.15.0"
+    "body-parser": "1.15.0",
+    "express-session": "1.13.0"
   },
   "engine": {
     "node": "*",
