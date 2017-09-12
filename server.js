@@ -2,7 +2,22 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-    
+
+//---
+var http = require('http'),
+    path = require('path'),
+    methods = require('methods'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    cors = require('cors'),
+    passport = require('passport'),
+    errorhandler = require('errorhandler'),
+    mongoose = require('mongoose');
+
+var app = express();
+app.use(cors());
+//---
+   
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
