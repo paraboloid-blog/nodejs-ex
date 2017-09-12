@@ -53,29 +53,33 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 
   }
 }
-//var db = null,
-//    dbDetails = new Object();
-//
-//var initDb = function(callback) {
-//  if (mongoURL == null) return;
-//
-//  var mongodb = require('mongodb');
-//  if (mongodb == null) return;
-//
-//  mongodb.connect(mongoURL, function(err, conn) {
-//    if (err) {
-//      callback(err);
-//      return;
-//    }
-//
-//    db = conn;
-//    dbDetails.databaseName = db.databaseName;
-//    dbDetails.url = mongoURLLabel;
-//    dbDetails.type = 'MongoDB';
-//
-//    console.log('Connected to MongoDB at: %s', mongoURL);
-//  });
-//};
+
+//mongoose.connect(mongoURL);
+
+
+var db = null,
+    dbDetails = new Object();
+
+var initDb = function(callback) {
+  if (mongoURL == null) return;
+
+  var mongodb = require('mongodb');
+  if (mongodb == null) return;
+
+  mongodb.connect(mongoURL, function(err, conn) {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    db = conn;
+    dbDetails.databaseName = db.databaseName;
+    dbDetails.url = mongoURLLabel;
+    dbDetails.type = 'MongoDB';
+
+    console.log('Connected to MongoDB at: %s', mongoURL);
+  });
+};
 //
 //app.get('/', function (req, res) {
 //  // try to initialize the db on every request if it's not already
@@ -120,7 +124,7 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 //  console.log('Error connecting to Mongo. Message:\n'+err);
 //});
 //
-//app.listen(port, ip);
+app.listen(port, ip);
 //console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = app ;
