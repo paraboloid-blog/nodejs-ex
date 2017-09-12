@@ -3,7 +3,7 @@ var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
 
-//---
+//---Start1
 var http = require('http'),
     path = require('path'),
     methods = require('methods'),
@@ -16,7 +16,13 @@ var http = require('http'),
 
 var app = express();
 app.use(cors());
-//---
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(require('method-override')());
+
+//--- End1
    
 Object.assign=require('object-assign')
 
