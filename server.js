@@ -93,26 +93,13 @@ app.get('/', function (req, res) {
     res.render('index.html', { pageCountMessage : null});
 });
 
-// error handling
-//app.use(function(err, req, res, next){
-//  console.error(err.stack);
-//  res.status(500).send('Something bad happened!');
-//});
-
-//app.listen(port, ip);
-//console.log('Server running on http://%s:%s', ip, port);
-
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({'errors': {
-    message: err.message,
-    error: {}
-  }});
+ error handling
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500).send('Something bad happened!');
 });
 
-// finally, let's start our server...
-var server = app.listen( process.env.PORT || 3000, function(){
-  console.log('Listening on port ' + server.address().port);
-});
+app.listen(port, ip);
+console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = app ;
