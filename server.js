@@ -7,11 +7,11 @@ var http = require('http'),
     cors = require('cors'),
     passport = require('passport'),
     errorhandler = require('errorhandler'),
-    mongoose = require('mongoose'),
-    morgan  = require('morgan');
+    mongoose = require('mongoose');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
+// Create global app object
 var app = express();
 
 app.use(cors());
