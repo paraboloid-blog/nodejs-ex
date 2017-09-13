@@ -53,10 +53,10 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-var initDb = function(callback) {
+//var initDb = function(callback) {
     mongoose.connect(mongoURL);
-};
-initDb(function(err){});
+//};
+//initDb(function(err){});
 
 //--- Start2
 require('./models/User');
