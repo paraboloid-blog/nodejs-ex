@@ -1,41 +1,7 @@
-var http = require('http'),
-    path = require('path'),
-    methods = require('methods'),
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    session = require('express-session'),
-    cors = require('cors'),
-    passport = require('passport'),
-    errorhandler = require('errorhandler'),
-    mongoose = require('mongoose');
-
-var isProduction = true; //process.env.NODE_ENV === 'production';
-
-// Create global app object
-var app = express();
-
-app.use(cors());
-
-// Normal express config defaults
-app.use(require('morgan')('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.use(require('method-override')());
-//app.use(express.static(__dirname + '/public'));
-
-//app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
-
-if (!isProduction) {
-  app.use(errorhandler());
-}
-
-//var express = require('express'),
-//    app     = express(),
-//    morgan  = require('morgan'),
-//    http = require('http'),
+//var http = require('http'),
 //    path = require('path'),
 //    methods = require('methods'),
+//    express = require('express'),
 //    bodyParser = require('body-parser'),
 //    session = require('express-session'),
 //    cors = require('cors'),
@@ -43,18 +9,52 @@ if (!isProduction) {
 //    errorhandler = require('errorhandler'),
 //    mongoose = require('mongoose');
 //
+//var isProduction = true; //process.env.NODE_ENV === 'production';
+//
+//// Create global app object
+//var app = express();
+//
 //app.use(cors());
 //
+//// Normal express config defaults
+//app.use(require('morgan')('dev'));
 //app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(bodyParser.json());
 //
 //app.use(require('method-override')());
-//app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
-//   
-//Object.assign=require('object-assign')
+////app.use(express.static(__dirname + '/public'));
 //
-//app.engine('html', require('ejs').renderFile);
-//app.use(morgan('combined'))
+////app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+//
+//if (!isProduction) {
+//  app.use(errorhandler());
+//}
+
+var express = require('express'),
+    app     = express(),
+    morgan  = require('morgan'),
+    http = require('http'),
+    path = require('path'),
+    methods = require('methods'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    cors = require('cors'),
+    passport = require('passport'),
+    errorhandler = require('errorhandler'),
+    mongoose = require('mongoose');
+
+app.use(cors());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(require('method-override')());
+app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+   
+Object.assign=require('object-assign')
+
+app.engine('html', require('ejs').renderFile);
+app.use(morgan('combined'))
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
