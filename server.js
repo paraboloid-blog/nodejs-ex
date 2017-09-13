@@ -53,30 +53,30 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-var db = null,
-    dbDetails = new Object();
-
-var initDb = function(callback) {
-  if (mongoURL == null) return;
-
-  var mongodb = require('mongodb');
-  if (mongodb == null) return;
-
-//mongoose.connect(mongoURL);
-  mongodb.connect(mongoURL, function(err, conn) {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    db = conn;
-    dbDetails.databaseName = db.databaseName;
-    dbDetails.url = mongoURLLabel;
-    dbDetails.type = 'MongoDB';
-
-    console.log('Connected to MongoDB at: %s', mongoURL);
-  });
-};
+//var db = null,
+//    dbDetails = new Object();
+//
+//var initDb = function(callback) {
+//  if (mongoURL == null) return;
+//
+//  var mongodb = require('mongodb');
+//  if (mongodb == null) return;
+//
+mongoose.connect(mongoURL);
+//  mongodb.connect(mongoURL, function(err, conn) {
+//    if (err) {
+//      callback(err);
+//      return;
+//    }
+//
+//    db = conn;
+//    dbDetails.databaseName = db.databaseName;
+//    dbDetails.url = mongoURLLabel;
+//    dbDetails.type = 'MongoDB';
+//
+//    console.log('Connected to MongoDB at: %s', mongoURL);
+//  });
+//};
 
 
 //--- Start2
@@ -90,21 +90,7 @@ app.use(require('./routes'));
 
 
 app.get('/', function (req, res) {
-//  // try to initialize the db on every request if it's not already
-//  // initialized.
-//  if (!db) {
-//    initDb(function(err){});
-//  }
-//  if (db) {
-//    var col = db.collection('counts');
-//    // Create a document with request IP and current time of request
-//    col.insert({ip: req.ip, date: Date.now()});
-//    col.count(function(err, count){
-//      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-//    });
-//  } else {
     res.render('index.html', { pageCountMessage : null});
-//  }
 });
 
 // error handling
