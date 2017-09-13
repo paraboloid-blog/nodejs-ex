@@ -114,13 +114,13 @@ app.get('/pagecount', function (req, res) {
   if (!db) {
     initDb(function(err){});
   }
-//  if (db) {
-//    db.collection('counts').count(function(err, count ){
-//      res.send('{ pageCount: ' + count + '}');
-//    });
-//  } else {
-//    res.send('{ pageCount: -1 }');
-//  }
+  if (db) {
+    db.collection('counts').count(function(err, count ){
+      res.send('{ pageCount: ' + count + '}');
+    });
+  } else {
+    res.send('{ pageCount: -1 }');
+  }
 });
 
 // error handling
