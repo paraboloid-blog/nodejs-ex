@@ -10,10 +10,14 @@ var http = require('http'),
     mongoose = require('mongoose'),
     morgan  = require('morgan');
 
+var isProduction = process.env.NODE_ENV === 'production';
+
 var app = express();
 
 app.use(cors());
 
+// Normal express config defaults
+app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
