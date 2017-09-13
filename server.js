@@ -56,7 +56,7 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 //var db = null,
 //    dbDetails = new Object();
 //
-//var initDb = function(callback) {
+var initDb = function(callback) {
 //  if (mongoURL == null) return;
 //
 //  var mongodb = require('mongodb');
@@ -76,8 +76,8 @@ mongoose.connect(mongoURL);
 //
 //    console.log('Connected to MongoDB at: %s', mongoURL);
 //  });
-//};
-
+};
+initDb(function(err){});
 
 //--- Start2
 require('./models/User');
