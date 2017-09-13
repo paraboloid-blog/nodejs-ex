@@ -1,47 +1,16 @@
-//var http = require('http'),
-//    path = require('path'),
-//    methods = require('methods'),
-//    express = require('express'),
-//    bodyParser = require('body-parser'),
-//    session = require('express-session'),
-//    cors = require('cors'),
-//    passport = require('passport'),
-//    errorhandler = require('errorhandler'),
-//    mongoose = require('mongoose');
-//
-//var isProduction = true; //process.env.NODE_ENV === 'production';
-//
-//// Create global app object
-//var app = express();
-//
-//app.use(cors());
-//
-//// Normal express config defaults
-//app.use(require('morgan')('dev'));
-//app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(bodyParser.json());
-//
-//app.use(require('method-override')());
-////app.use(express.static(__dirname + '/public'));
-//
-////app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
-//
-//if (!isProduction) {
-//  app.use(errorhandler());
-//}
-
-var express = require('express'),
-    app     = express(),
-    morgan  = require('morgan'),
-    http = require('http'),
+var http = require('http'),
     path = require('path'),
     methods = require('methods'),
+    express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     cors = require('cors'),
     passport = require('passport'),
     errorhandler = require('errorhandler'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    morgan  = require('morgan');
+
+var app = express();
 
 app.use(cors());
 
