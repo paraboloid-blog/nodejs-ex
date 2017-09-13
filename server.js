@@ -89,7 +89,7 @@ app.use(require('./routes'));
 //--- End2
 
 
-app.get('/', function (req, res) {
+//app.get('/', function (req, res) {
 //  // try to initialize the db on every request if it's not already
 //  // initialized.
 //  if (!db) {
@@ -103,9 +103,9 @@ app.get('/', function (req, res) {
 //      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
 //    });
 //  } else {
-    res.render('index.html', { pageCountMessage : null});
+//    res.render('index.html', { pageCountMessage : null});
 //  }
-});
+//});
 
 // error handling
 app.use(function(err, req, res, next){
