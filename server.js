@@ -53,29 +53,8 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-//var db = null,
-//    dbDetails = new Object();
-//
 var initDb = function(callback) {
-//  if (mongoURL == null) return;
-//
-//  var mongodb = require('mongodb');
-//  if (mongodb == null) return;
-//
-mongoose.connect(mongoURL);
-//  mongodb.connect(mongoURL, function(err, conn) {
-//    if (err) {
-//      callback(err);
-//      return;
-//    }
-//
-//    db = conn;
-//    dbDetails.databaseName = db.databaseName;
-//    dbDetails.url = mongoURLLabel;
-//    dbDetails.type = 'MongoDB';
-//
-//    console.log('Connected to MongoDB at: %s', mongoURL);
-//  });
+    mongoose.connect(mongoURL);
 };
 initDb(function(err){});
 
