@@ -108,12 +108,11 @@ app.use(function(err, req, res, next) {
   }});
 });
 
-//app.use(function(err, req, res, next){
-//  console.error(err.stack);
-//  res.status(500).send('Something bad happened!');
-//});
+//app.listen(port, ip);
+//console.log('Server running on http://%s:%s', ip, port);
 
-app.listen(port, ip);
-console.log('Server running on http://%s:%s', ip, port);
+var server = app.listen(port, ip, function(){
+  console.log('Listening on port ' + server.address().port);
+});
 
 module.exports = app ;
