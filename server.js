@@ -25,7 +25,11 @@ app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 
 app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
-   
+
+if (!isProduction) {
+  app.use(errorhandler());
+}
+  
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
