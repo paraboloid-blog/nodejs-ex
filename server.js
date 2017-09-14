@@ -25,10 +25,14 @@ app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 
 app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
-   
-Object.assign=require('object-assign')
 
-app.engine('html', require('ejs').renderFile);
+if (!isProduction) {
+  app.use(errorhandler());
+}
+  
+//Object.assign=require('object-assign')
+
+//app.engine('html', require('ejs').renderFile);
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -55,7 +59,12 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-mongoose.connect(mongoURL);
+if(isProduction){
+  mongoose.connect(mongoURL);
+} else {
+  mongoose.connect('mongodb://localhost/conduit');
+  mongoose.set('debug', true);
+}
 
 require('./models/User');
 require('./models/Article');
