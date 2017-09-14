@@ -15,6 +15,7 @@ var isProduction = process.env.NODE_ENV === 'production';
 var app = express();
 
 app.use(cors());
+app.engine('html', require('ejs').renderFile);
 
 // Normal express config defaults
 app.use(require('morgan')('dev'));
@@ -29,8 +30,6 @@ app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, s
 if (!isProduction) {
   app.use(errorhandler());
 }
-  
-app.engine('html', require('ejs').renderFile);
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
