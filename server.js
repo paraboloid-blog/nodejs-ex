@@ -56,7 +56,12 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-mongoose.connect(mongoURL);
+if(isProduction){
+  mongoose.connect(mongoURL);
+} else {
+  mongoose.connect('mongodb://localhost/conduit');
+  mongoose.set('debug', true);
+}
 
 require('./models/User');
 require('./models/Article');
